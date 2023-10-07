@@ -1,6 +1,12 @@
 import json
 from fastapi import FastAPI
 
+app = FastAPI()
+
+@app.get("/api/python")
+def root():
+    return {"message": "Hello World"}
+
 def dataProcessing(input_list):
     with open ('recipes_raw/recipes_raw_nosource_fn.json') as json_file:
         full_data = json.load(json_file)
