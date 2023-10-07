@@ -1,4 +1,4 @@
-import { TableRow } from "./TableRow";
+import { TableRow } from "./RowRecipe";
 function Table({ header, inputs }) {
   return (
     <div className="overflow-x-auto bg-slate-900">

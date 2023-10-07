@@ -1,5 +1,5 @@
 import { NavBar } from "../components/NavBar.jsx";
-import { Table } from "../components/Table.jsx";
+import { Table } from "../components/TableIngredients.jsx";
 const header = ["Ingredients"];
 const ingredients = [
   ["Tomato Sauce"],

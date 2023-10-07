@@ -1,4 +1,4 @@
-import { Table } from "./components/Table.jsx";
+import { Table } from "./components/TableRecipes.jsx";
 import { NavBar } from "./components/NavBar.jsx";
 const header = ["Recipe", "Ingredients", "Relevancy Score"];
 const recipes = [

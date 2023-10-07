@@ -1,3 +1,4 @@
+import InputIngredient from "./InputIngredient";
 function TableRow({ inputs }) {
   return (
     <tr>
