@@ -7,8 +7,8 @@ function Table({ header, inputs }) {
         <thead>
           <tr>
             <th></th>
-            {header.map((h) => (
-              <th>{h}</th>
+            {header.map((h, index) => (
+              <th key={index}>{h}</th>
             ))}
           </tr>
         </thead>
