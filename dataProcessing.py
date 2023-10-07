@@ -31,13 +31,7 @@ for input_ing in ingredients:
         if recipe_quant not in results_dict:
             results_dict[recipe_quant] = 0
         results_dict[recipe_quant] += 100/len(recipes[recipe_quant]["ingredients"])
-      
-# for title in results_dict:
-#     total_ing = len(recipes[title]["ingredients"])
-#     results_dict[title] = (results_dict[recipe_quant]/total_ing)*100
 
 #Sorts results in descending order        
-results_dict = sorted(results_dict.items(), key=lambda x:x[1], reverse=False)
+results_dict = sorted(results_dict.items(), key=lambda x:x[1], reverse=True)
 print(results_dict)
-
-#Figure out a way to load the pictures with each correlated recipe
