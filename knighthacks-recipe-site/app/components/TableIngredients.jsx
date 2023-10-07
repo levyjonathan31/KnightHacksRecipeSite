@@ -15,8 +15,8 @@ function Table({ header, inputs }) {
         </thead>
         <tbody>
           <InputIngredient />
-          {inputs.map((input) => (
-            <TableRow inputs={input} />
+          {inputs.map((input, index) => (
+            <TableRow key={index} inputs={input} />
           ))}
         </tbody>
       </table>

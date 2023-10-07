@@ -13,8 +13,8 @@ function Table({ header, inputs }) {
           </tr>
         </thead>
         <tbody>
-          {inputs.map((input) => (
-            <TableRow inputs={input} />
+          {inputs.map((input, index) => (
+            <TableRow key={index} inputs={input} />
           ))}
         </tbody>
       </table>

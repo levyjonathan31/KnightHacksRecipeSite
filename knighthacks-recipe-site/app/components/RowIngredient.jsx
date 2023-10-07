@@ -13,9 +13,10 @@ function TableRow({ inputs }) {
           </div> */}
         </div>
       </td>
-      {inputs.map((input) => (
-        <td>{input}</td>
+      {inputs.map((input, index) => (
+        <td key={index}>{input}</td>
       ))}
+
       <th>
         <button className="btn btn-ghost btn-xs text-red-400">Remove</button>
       </th>

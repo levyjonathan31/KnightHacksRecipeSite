@@ -23,7 +23,7 @@ function InputIngredient() {
         }
       </td>
       <th>
-        <button className="btn btn-ghost btn-xs text-green-500">Add</button>
+        <button className="btn btn-ghost btn-xs text-green-400">Add</button>
       </th>
     </tr>
   );
