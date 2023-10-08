@@ -2,17 +2,21 @@
 
 import { NavBar } from "../components/NavBar.jsx";
 import { Table } from "../components/TableIngredients.jsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const header = ["Ingredients"];
 
 export default function Home() {
   const [ingredients, setIngredients] = useState([]);
-
   // Function to add the ingredients list
+  useEffect(() => {
+    fetch("/api/getIngredients")
+      .then((res) => res.json())
+      .then((data) => {
+        setIngredients(data.ingredients);
+      });
+  }, []);
   const addIngredient = (newValue) => {
-    console.log(newValue);
-    console.log(ingredients);
     fetch("/api/sendIngredient", {
       method: "POST",
       headers: {
