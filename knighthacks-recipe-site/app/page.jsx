@@ -11,7 +11,7 @@ export default function Home() {
     fetch("/api/dataProcessing")
       .then((res) => res.json())
       .then((data) => {
-        setRecipes(data);
+        setRecipes(data.results);
       });
   }, []);
 

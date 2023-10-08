@@ -40,8 +40,9 @@ async function dataProcessing(inputList) {
         if (!resultsDict.hasOwnProperty(recipeQuant)) {
           resultsDict[recipeQuant] = 0;
         }
-        resultsDict[recipeQuant] +=
-          100 / recipes[recipeQuant].ingredients.length;
+        resultsDict[recipeQuant] += parseFloat(
+          (100 / recipes[recipeQuant].ingredients.length).toFixed(2)
+        );
       }
     }
 
@@ -84,8 +85,16 @@ export async function GET() {
       result.relevancyScore,
       result.instructions,
     ]);
+    const descriptionArray = results.results.map((result) => [
+      result.instructions,
+    ]);
 
-    return new Response(JSON.stringify(resultsArray), {
+    const combinedResult = {
+      results: resultsArray,
+      descriptions: descriptionArray,
+    };
+
+    return new Response(JSON.stringify(combinedResult), {
       headers: { "Content-Type": "application/json" },
     });
   } catch (error) {

@@ -25,6 +25,14 @@ function InputIngredient({ onAdd }) {
             className="input input-bordered w-1/4 h-3/4 text-s"
             value={newIngredient}
             onChange={(e) => setNewIngredient(e.target.value)}
+            onSubmit={(e) => setNewIngredient("")}
+            // clear the input after adding
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                onAdd(newIngredient);
+                setNewIngredient("");
+              }
+            }}
           />
         }
       </td>
