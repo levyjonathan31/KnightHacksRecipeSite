@@ -1,9 +1,10 @@
 import json
+import os
 from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 
-from motor.motor_asyncio import AsyncIOMotorClient
-import os
+from pymongo import MongoClient
+
 
 from dotenv import load_dotenv
 app = FastAPI()
@@ -65,20 +66,25 @@ MONGO_DB_URI = os.environ.get("MONGODB_URI")
 MONGO_DB_NAME = "KnightBites"
 
 # Dependency to get the MongoDB client
-async def get_database_client():
-    client = AsyncIOMotorClient(MONGO_DB_URI)
-    database = client[MONGO_DB_NAME]
-    yield database
-    client.close()
+def get_database():
+ 
+   # Provide the mongodb atlas url to connect python to mongodb using pymongo
+   CONNECTION_STRING = MONGO_DB_URI
+ 
+   # Create a connection using MongoClient. You can import MongoClient or use pymongo.MongoClient
+   client = MongoClient(CONNECTION_STRING)
+   # Create the database for our example (we will use the same database throughout the tutorial
+   return client[MONGO_DB_NAME]
+  
+# This is added so that many files can reuse the function get_database()
 
 @app.get("/process-ingredients")
-async def process_ingredients(db: AsyncIOMotorClient = Depends(get_database_client)):
+async def process_ingredients(db: get_database()):
     try:
         # Fetch data from the database
         # For example, assuming you have a collection named "ingredients"
         ingredients_collection = db["ingredients"]
-        ingredients = await ingredients_collection.find().to_list(length=None)
-
+        ingredients = await db[ingredients_collection].find().to_list(length=None)
         # Process the data
         processed_data = data_processing([ingredient["name"] for ingredient in ingredients])
 

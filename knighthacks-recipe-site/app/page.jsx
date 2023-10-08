@@ -8,10 +8,10 @@ const header = ["Recipe", "Ingredients", "Relevancy Score"];
 export default function Home() {
   const [recipes, setRecipes] = useState([]);
   useEffect(() => {
-    fetch("https://knight-bites.vercel.app/process-ingredients")
+    fetch("/api/dataProcessing")
       .then((res) => res.json())
       .then((data) => {
-        setRecipes(data.processedData);
+        setRecipes(data);
       });
   }, []);
 
