@@ -16,7 +16,7 @@ function Table({ header, inputs, onAdd, onRemove }) {
         <tbody>
           <InputIngredient onAdd={onAdd} index={inputs.length} />
           {inputs.map((input, index) => (
-            <TableRow onRemove={onRemove} index={index} inputs={input} />
+            <TableRow onRemove={onRemove} index={index} ingredient={input} />
           ))}
         </tbody>
       </table>
