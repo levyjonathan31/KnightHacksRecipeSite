@@ -11,11 +11,25 @@ export default function Home() {
 
   // Function to add the ingredients list
   const addIngredient = (newValue) => {
+    fetch("/api/sendIngredient", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ ingredient: newValue }),
+    });
     setIngredients((prevIngredients) => [[newValue], ...prevIngredients]);
   };
 
   // Function to remove an ingredient
   const removeIngredient = (index) => {
+    fetch("/api/removeIngredient", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ index: index }),
+    });
     setIngredients((prevIngredients) => {
       const updatedIngredients = [...prevIngredients];
 
