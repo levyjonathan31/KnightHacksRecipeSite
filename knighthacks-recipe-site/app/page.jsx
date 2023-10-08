@@ -1,24 +1,20 @@
+"use client";
 import { Table } from "./components/TableRecipes.jsx";
 import { NavBar } from "./components/NavBar.jsx";
+import { useEffect } from "react";
+import { useState } from "react";
 const header = ["Recipe", "Ingredients", "Relevancy Score"];
-const recipes = [
-  [
-    "Spaghetti Bolognese",
-    ["Spaghetti", "Ground beef", "Tomato sauce", "Onions", "Garlic", "Oregano"],
-    "100%",
-    "To make this, you need to boil the spaghetti, cook the ground beef, and mix it all together.",
-  ],
-  [
-    "Chicken Stir Fry",
-    ["Chicken breast", "Broccoli", "Soy sauce", "Ginger", "Vegetables"],
-    "100%",
-    "To make this, you need to cook the chicken, cook the broccoli, and mix it all together.",
-  ],
-
-  // Add more recipe objects as needed
-];
 
 export default function Home() {
+  const [recipes, setRecipes] = useState([]);
+  useEffect(() => {
+    fetch("http://127.0.0.1:8000/process-ingredients")
+      .then((res) => res.json())
+      .then((data) => {
+        setRecipes(data.processedData);
+      });
+  }, []);
+
   return (
     <div>
       <NavBar />
