@@ -1,24 +1,38 @@
+"use client";
+
 import { NavBar } from "../components/NavBar.jsx";
 import { Table } from "../components/TableIngredients.jsx";
+import { useState } from "react";
+
 const header = ["Ingredients"];
-const ingredients = [
-  ["Tomato Sauce"],
-  ["Ground Beef"],
-  ["Spaghetti"],
-  ["Onions"],
-  ["Garlic"],
-  ["Oregano"],
-  ["Chicken Breast"],
-  ["Broccoli"],
-  ["Soy Sauce"],
-  ["Ginger"],
-  ["Vegetables"],
-];
+
 export default function Home() {
+  const [ingredients, setIngredients] = useState([]);
+
+  // Function to add the ingredients list
+  const addIngredient = (newValue) => {
+    setIngredients((prevIngredients) => [[newValue], ...prevIngredients]);
+  };
+
+  // Function to remove an ingredient
+  const removeIngredient = (index) => {
+    setIngredients((prevIngredients) => {
+      const updatedIngredients = [...prevIngredients];
+
+      updatedIngredients.splice(index, 1);
+      return updatedIngredients;
+    });
+  };
   return (
     <div>
       <NavBar />
-      <Table header={header} inputs={ingredients} />
+      <Table
+        header={header}
+        inputs={ingredients}
+        onAdd={addIngredient}
+        onRemove={removeIngredient}
+      />
+      <div className="bg-slate-900 h-screen"></div>
     </div>
   );
 }

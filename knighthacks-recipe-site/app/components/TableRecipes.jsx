@@ -1,5 +1,5 @@
 import { TableRow } from "./RowRecipe";
-function Table({ header, inputs }) {
+function Table({ header, inputs, onAdd, onRemove }) {
   return (
     <div className="overflow-x-auto bg-slate-900">
       <table className="table">

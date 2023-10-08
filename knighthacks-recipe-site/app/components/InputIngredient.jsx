@@ -1,4 +1,7 @@
-function InputIngredient() {
+"use client";
+import { useState } from "react";
+function InputIngredient({ onAdd }) {
+  const [newIngredient, setNewIngredient] = useState("");
   return (
     <tr>
       <td>
@@ -16,14 +19,22 @@ function InputIngredient() {
       <td>
         {
           <input
+            id="addedElement"
             type="text"
             placeholder="Type here"
             className="input input-bordered w-1/4 h-3/4 text-s"
+            value={newIngredient}
+            onChange={(e) => setNewIngredient(e.target.value)}
           />
         }
       </td>
       <th>
-        <button className="btn btn-ghost btn-xs text-green-400">Add</button>
+        <button
+          onClick={() => onAdd(newIngredient)}
+          className="btn btn-ghost btn-xs text-green-400"
+        >
+          Add
+        </button>
       </th>
     </tr>
   );

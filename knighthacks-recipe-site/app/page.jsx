@@ -23,6 +23,7 @@ export default function Home() {
     <div>
       <NavBar />
       <Table inputs={recipes} header={header} />
+      <div className="bg-slate-900 h-screen"></div>
     </div>
   );
 }
