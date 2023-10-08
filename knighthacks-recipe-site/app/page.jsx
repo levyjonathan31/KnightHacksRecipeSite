@@ -3,7 +3,7 @@ import { Table } from "./components/TableRecipes.jsx";
 import { NavBar } from "./components/NavBar.jsx";
 import { useEffect } from "react";
 import { useState } from "react";
-const header = ["Recipe", "Ingredients", "Relevancy Score"];
+const header = ["Recipe", "Ingredients", "Relevancy Score", "Instructions"];
 
 export default function Home() {
   const [recipes, setRecipes] = useState([]);

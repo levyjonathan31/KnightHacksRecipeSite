@@ -82,7 +82,7 @@ export async function GET() {
     const resultsArray = results.results.map((result) => [
       result.recipe,
       result.ingredients,
-      result.relevancyScore,
+      result.relevancyScore + "%",
       result.instructions,
     ]);
     const descriptionArray = results.results.map((result) => [
