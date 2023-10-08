@@ -11,6 +11,8 @@ export default function Home() {
 
   // Function to add the ingredients list
   const addIngredient = (newValue) => {
+    console.log(newValue);
+    console.log(ingredients);
     fetch("/api/sendIngredient", {
       method: "POST",
       headers: {
@@ -18,21 +20,27 @@ export default function Home() {
       },
       body: JSON.stringify({ ingredient: newValue }),
     });
-    setIngredients((prevIngredients) => [[newValue], ...prevIngredients]);
+    if (newValue === "") {
+      return;
+    }
+    if (!ingredients.includes(newValue)) {
+      setIngredients((prevIngredients) => [newValue, ...prevIngredients]);
+    }
   };
 
   // Function to remove an ingredient
-  const removeIngredient = (index) => {
+  const removeIngredient = (name) => {
+    console.log("Removing ingredient");
     fetch("/api/removeIngredient", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ index: index }),
+      body: JSON.stringify({ ingredient: name }),
     });
     setIngredients((prevIngredients) => {
       const updatedIngredients = [...prevIngredients];
-
+      const index = updatedIngredients.indexOf(name);
       updatedIngredients.splice(index, 1);
       return updatedIngredients;
     });

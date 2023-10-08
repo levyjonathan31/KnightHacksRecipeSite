@@ -13,8 +13,8 @@ function TableRow({ inputs }) {
           </div> */}
         </div>
       </td>
-      {inputs.map((input, index) => (
-        <td key={index}>{input}</td>
+      {inputs.map((input) => (
+        <td>{input}</td>
       ))}
 
       <th>

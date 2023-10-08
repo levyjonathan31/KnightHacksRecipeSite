@@ -1,5 +1,4 @@
-function TableRow({ ingredient, onRemove, index }) {
-  console.log("key: " + index);
+function TableRow({ ingredient, onRemove }) {
   return (
     <tr>
       <td>
@@ -17,10 +16,10 @@ function TableRow({ ingredient, onRemove, index }) {
       {/* {ingredient.map((input, index) => (
         <td key={index}>{input}</td>
       ))} */}
-      <td> {ingredient}</td>
+      <td>{ingredient}</td>
       <th>
         <button
-          onClick={() => onRemove(index)}
+          onClick={() => onRemove(ingredient)}
           className="btn btn-ghost btn-xs text-red-400"
         >
           Remove
