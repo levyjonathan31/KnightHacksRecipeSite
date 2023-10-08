@@ -9,7 +9,7 @@ function Table({ header, inputs }) {
           <tr>
             <th></th>
             {header.map((h) => (
-              <th>{h}</th>
+              <th key={uuidv4()}>{h}</th>
             ))}
           </tr>
         </thead>

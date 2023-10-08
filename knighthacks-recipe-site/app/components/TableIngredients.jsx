@@ -10,12 +10,12 @@ function Table({ header, inputs, onAdd, onRemove }) {
           <tr>
             <th></th>
             {header.map((h) => (
-              <th>{h}</th>
+              <th key={uuidv4()}>{h}</th>
             ))}
           </tr>
         </thead>
         <tbody>
-          <InputIngredient onAdd={onAdd} index={uuidv4()} />
+          <InputIngredient onAdd={onAdd} key={uuidv4()} />
           {inputs.map((input) => (
             <TableRow onRemove={onRemove} key={uuidv4()} ingredient={input} />
           ))}

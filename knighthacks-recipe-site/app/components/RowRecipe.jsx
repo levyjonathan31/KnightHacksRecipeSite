@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from "uuid";
 function TableRow({ inputs }) {
   return (
     <tr>
@@ -14,7 +15,7 @@ function TableRow({ inputs }) {
         </div>
       </td>
       {inputs.map((input) => (
-        <td>{input}</td>
+        <td key={uuidv4()}>{input}</td>
       ))}
 
       <th>
